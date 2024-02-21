@@ -29,8 +29,8 @@ fg_dir = '/marconi_work/INF24_litebird/anto/fgs'
 fg_models = {
     "dust": 'pysm_dust_1.cfg',
     "synch": 'pysm_synch_1.cfg',
+    "ame": 'pysm_ame_1.cfg',
     "freefree": 'pysm_freefree_1.cfg',
-    "ame": 'pysm_ame_1.cfg'
     }
 
 #output options
