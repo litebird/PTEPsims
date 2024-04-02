@@ -6,7 +6,7 @@ dtype = 'float'
 inst = 'LB_IMOv1'
 
 #output maps parameters
-nside = 128
+nside = 512
 gaussian_smooth = True
 band_int = False
 save_coadd = True
