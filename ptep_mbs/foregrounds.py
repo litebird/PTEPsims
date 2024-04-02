@@ -44,9 +44,9 @@ class ForegroundModel:
             fwhm = self.instr[chnl]['beam']
             if self.params.band_int:
                 band = self.instr[chnl]['freq_band']
-                fmin = int(freq-band/2.)
-                fmax = int(freq+band/2.)
-                fsteps = fmax-fmin+1
+                fmin = freq-band/2.
+                fmax = freq+band/2.
+                fsteps = int(fmax-fmin+1)
                 bandpass_frequencies = np.linspace(fmin, fmax, fsteps) * u.GHz
                 weights = np.ones(len(bandpass_frequencies))
                 sky_extrap = sky.get_emission(bandpass_frequencies, weights)
