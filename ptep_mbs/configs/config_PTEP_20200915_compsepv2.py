@@ -1,6 +1,6 @@
 #general configuration
 parallel = True
-dtype = 'float'
+dtype = 'float32'
 
 #define LiteBIRD instrument
 inst = 'LB_IMOv1'

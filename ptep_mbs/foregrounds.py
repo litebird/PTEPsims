@@ -35,7 +35,7 @@ class ForegroundModel:
         sky = pysm3.Sky(nside=self.nside, component_config=fg_config_file)
         fg_maps = []
         for chnl in tqdm(self.channels, desc=f'Foreground simulation for component {cmp}',leave=True,unit='channel'):
-            fname = os.path.join(self.libdir,f'{chnl}_{cmp}_{self.nside}.fits')
+            fname = os.path.join(self.libdir,f"{chnl}_{cmp}_{self.nside}{'_bp_int' if self.params.band_int else ''}.fits")
             if os.path.exists(fname):
                 fg_maps.append(hp.read_map(fname, (0,1,2), verbose=False))
                 continue
@@ -46,7 +46,7 @@ class ForegroundModel:
                 band = self.instr[chnl]['freq_band']
                 fmin = freq-band/2.
                 fmax = freq+band/2.
-                fsteps = fmax-fmin+1
+                fsteps = int(fmax-fmin+1)
                 bandpass_frequencies = np.linspace(fmin, fmax, fsteps) * u.GHz
                 weights = np.ones(len(bandpass_frequencies))
                 sky_extrap = sky.get_emission(bandpass_frequencies, weights)
@@ -59,7 +59,7 @@ class ForegroundModel:
             else:
                 sky_extrap_smt = sky_extrap
             fg_maps.append(sky_extrap_smt)
-            hp.write_map(fname, sky_extrap_smt, dtype=np.float32)
+            hp.write_map(fname, sky_extrap_smt, dtype=np.float32) #TODO use params.dtype
         return np.array(fg_maps)
     
     def fg_sims(self):
