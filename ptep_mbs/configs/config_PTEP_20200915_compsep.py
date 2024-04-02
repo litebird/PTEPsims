@@ -1,13 +1,14 @@
 #general configuration
 parallel = True
+dtype = 'float'
 
 #define LiteBIRD instrument
 inst = 'LB_IMOv1'
 
 #output maps parameters
-nside = 512
+nside = 128
 gaussian_smooth = True
-band_int = False
+band_int = True
 save_coadd = True
 
 #noise configuration
@@ -25,12 +26,12 @@ seed_cmb = 38198
 
 # #foregrund configuration
 make_fg = True
-fg_dir = '/marconi_work/INF24_litebird/anto/fgs'
+fg_dir = '/pscratch/sd/l/lonappan/fgs'
 fg_models = {
     "dust": 'pysm_dust_1.cfg',
-    "synch": 'pysm_synch_1.cfg',
-    "ame": 'pysm_ame_1.cfg',
-    "freefree": 'pysm_freefree_1.cfg',
+    #"synch": 'pysm_synch_1.cfg',
+    #"ame": 'pysm_ame_1.cfg',
+    #"freefree": 'pysm_freefree_1.cfg',
     }
 
 #output options

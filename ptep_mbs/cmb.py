@@ -70,6 +70,11 @@ class CMBModel:
         if self.seed_cmb:
             np.random.seed(self.seed_cmb+idx)
         cmb_temp = hp.synfast(self.cl_cmb, self.nside, new=True, verbose=False)
+        if self.params.dtype == 'float32':
+            cmb_temp = cmb_temp.astype(np.float32)
+            print(f'Converted to float32')
+        else:
+            print(f'Keeping as float64')
         
         sky = pysm3.Sky(nside=self.nside, component_objects=[CMBMap(self.nside, map_IQU=cmb_temp)])
         cmb_maps = []
@@ -77,9 +82,9 @@ class CMBModel:
             freq = self.instr[chnl]['freq']
             if self.params.band_int:
                 band = self.instr[chnl]['freq_band']
-                fmin = freq-band/2.
-                fmax = freq+band/2.
-                fsteps = fmax-fmin+1
+                fmin = int(freq-band/2.)
+                fmax = int(freq+band/2.)
+                fsteps = int(fmax-fmin+1)
                 bandpass_frequencies = np.linspace(fmin, fmax, fsteps) * u.GHz
                 weights = np.ones(len(bandpass_frequencies))
                 cmb_map = sky.get_emission(bandpass_frequencies, weights)
