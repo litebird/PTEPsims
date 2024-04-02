@@ -1,11 +1,11 @@
 from setuptools import setup
 
 setup(name = 'ptep_mbs',
-      version = '0.1',
+      version = '1.1',
       description = '',
       url = '',
-      author = 'Nicoletta Krachmalnicoff',
-      author_email = 'nkrach@sissa.it',
+      author = 'Nicoletta Krachmalnicoff, Anto I Lonappan',
+      author_email = 'nkrach@sissa.it, alonappa@sissa.it',
       license = 'MIT',
       packages = ['ptep_mbs'],
       package_dir = {'ptep_mbs': 'ptep_mbs'},

@@ -8,7 +8,7 @@ inst = 'LB_IMOv1'
 #output maps parameters
 nside = 128
 gaussian_smooth = True
-band_int = True
+band_int = False
 save_coadd = True
 
 #noise configuration
