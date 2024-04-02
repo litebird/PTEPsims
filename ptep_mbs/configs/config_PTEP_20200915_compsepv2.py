@@ -6,7 +6,7 @@ dtype = 'float32'
 inst = 'LB_IMOv1'
 
 #output maps parameters
-nside = 128
+nside = 512
 gaussian_smooth = True
 band_int = True
 save_coadd = True
@@ -29,9 +29,9 @@ make_fg = True
 fg_dir = '/pscratch/sd/l/lonappan/fgs'
 fg_models = {
     "dust": 'pysm_dust_1.cfg',
-    #"synch": 'pysm_synch_1.cfg',
-    #"ame": 'pysm_ame_1.cfg',
-    #"freefree": 'pysm_freefree_1.cfg',
+    "synch": 'pysm_synch_1.cfg',
+    "ame": 'pysm_ame_1.cfg',
+    "freefree": 'pysm_freefree_1.cfg',
     }
 
 #output options
